@@ -9,23 +9,32 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace HomeWork1.Model
 {
-    public class ItemList
-        { 
+    public class ItemList : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private string id;
 
-        private string title;
-        public string pub_title
+        private string title_;
+        public string title
         {
-            set { title = value;  }
-            get { return title; }
+            get { return title_; }
+            set
+            {
+                title_ = value;
+                NotifyPropertyChanged("title");
+            }
         }
 
-        private ImageSource img;
-        public ImageSource pub_img
+        private ImageSource img_;
+        public ImageSource img
         {
-            set { img = value; }
-            get { return img; }
+            get { return img_; }
+            set
+            {
+                img_ = value;
+                NotifyPropertyChanged("img");
+            }
         }
 
         public string detail { get; set; }
@@ -42,5 +51,9 @@ namespace HomeWork1.Model
             this.completed = false;
         }
 
+        private void NotifyPropertyChanged(string name)
+        {
+            if (this.PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
     }
 }

@@ -88,9 +88,9 @@ namespace App4
             else
             {
                 this.CreateButtonOrUpdate.Content = "Update";
-                this.TitleTextBox.Text = ViewModel.SelectedItem.pub_title;
+                this.TitleTextBox.Text = ViewModel.SelectedItem.title;
                 this.DetailTextBox.Text = ViewModel.SelectedItem.detail;
-                this.Image.Source = ViewModel.SelectedItem.pub_img;
+                this.Image.Source = ViewModel.SelectedItem.img;
                 this.Datepicker.Date = ViewModel.SelectedItem.date;
             }
         }
@@ -122,12 +122,14 @@ namespace App4
                     this.ViewModel.AddItemList(TitleTextBox.Text, DetailTextBox.Text, Datepicker.Date.DateTime, Image.Source);
                     await new MessageDialog("Create successfully!").ShowAsync();
                     this.ViewModel.SelectedItem = null;
+                    Frame.Navigate(typeof(MainPage), ViewModel);
                 }
                 else
                 {
                     ViewModel.UpdateItemList(TitleTextBox.Text, DetailTextBox.Text, Datepicker.Date.DateTime, Image.Source);
                     await new MessageDialog("Update successfully!").ShowAsync();
                     ViewModel.SelectedItem = null;
+                    Frame.Navigate(typeof(MainPage), ViewModel);
                 }
             }
         }

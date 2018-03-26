@@ -8,7 +8,7 @@
     mc:Ignorable="d">
     <Page.BottomAppBar >
         <CommandBar>
-            <AppBarButton x:Name="DeleteAppBarButton" Icon=" Add" Label="Add" Click="DeleteAppBarButton_Click" />
+            <AppBarButton x:Name="DeleteAppBarButton" Icon="Delete" Label="Delete" Click="DeleteAppBarButton_Click" />
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -18,7 +18,7 @@
                 <ImageBrush Stretch="Fill" ImageSource="../Assets/MainPageBackground.jpg"/>
             </Grid.Background>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
             </Grid.RowDefinitions>
@@ -31,12 +31,13 @@
             </Grid.ColumnDefinitions>
             <AppBarButton Icon="Back" Label="" Click="AppBarButton_Click"/>
             <TextBlock x:Name="MainPageTitle" Text="Edit list item" Grid.ColumnSpan="2" Style="{StaticResource header}" Grid.Column="1"/>
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" >
-                <Grid Height="200" Width="200">
-                    <Image  Source="../Assets/icon1.jpg" Width="{Binding ElementName=PictureSlider,Path=Value}" />
+            <StackPanel x:Name="AddItemStackPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Visibility="Visible" >
+                <Grid Height="150" Width="150">
+                    <Image x:Name="Image" Source="../Assets/icon1.jpg" Width="{Binding ElementName=PictureSlider,Path=Value}" />
                 </Grid>
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Slider x:Name="PictureSlider"  Minimum="100" Maximum="200"/>
+                    <AppBarButton x:Name="SelectImgButton" Icon="Pictures" HorizontalAlignment="Right" Label="Select" Click="SelectImgButton_Click" />
+                    <Slider x:Name="PictureSlider"  Minimum="100" Maximum="150"/>
                     <TextBlock Text="Title"  FontSize="30"  TextAlignment="Left" />
                     <TextBox x:Name="TitleTextBox" Text=""  Height="30" Margin="0, 10, 0, 0"/>
                     <TextBlock Text= "Detail"  FontSize="30" Margin="0"/>

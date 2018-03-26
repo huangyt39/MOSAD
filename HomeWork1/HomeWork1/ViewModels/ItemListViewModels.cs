@@ -28,17 +28,17 @@ namespace HomeWork1.ViewModels
             this.allItems.Add(new Model.ItemList(title, detail, date, imageSource));
         }
 
-        public void RemoveItemList(string id)
+        public void RemoveItemList(Model.ItemList it)
         {
-            this.allItems.Remove(selectedItem);
+            this.allItems.Remove(it);
             this.selectedItem = null;
         }
 
         public void UpdateItemList(string title, string detail, DateTime date, ImageSource imageSource)
         {
-            this.selectedItem.pub_title = title;
+            this.selectedItem.title = title;
             this.selectedItem.detail = detail;
-            this.selectedItem.pub_img = imageSource;
+            this.selectedItem.img = imageSource;
             this.selectedItem.date = date;
 
             this.selectedItem = null;

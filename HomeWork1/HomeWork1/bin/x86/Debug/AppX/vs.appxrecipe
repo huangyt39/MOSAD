@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>495f4644-5f8a-4ecb-87ad-3b66b65999fd</PackageIdentityName>
     <PackageIdentityPublisher>CN=g</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\g\source\repos\HomeWork1\HomeWork1\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>D:\MOSAD\HomeWork1\HomeWork1\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,7 +18,7 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\g\source\repos\HomeWork1\HomeWork1\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>D:\MOSAD\HomeWork1\HomeWork1\bin\x86\Debug\AppX</LayoutDir>
     <RegisteredManifestChecksum>046C0D5C3A5C03CDEEAC57C63230C9B42F047D983C4986E25C155AC95E21994C</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>495f4644-5f8a-4ecb-87ad-3b66b65999fd_1.0.0.0_x86__4x18qaq93ja1j</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>495f4644-5f8a-4ecb-87ad-3b66b65999fd_4x18qaq93ja1j!App</RegisteredUserModeAppID>
@@ -28,16 +28,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="D:\MOSAD\HomeWork1\HomeWork1\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-25T08:17:38.093</Modified>
+      <Modified>2018-03-26T16:01:25.376</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\bin\x86\Debug\HomeWork1.exe">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\bin\x86\Debug\HomeWork1.exe">
       <PackagePath>entrypoint\HomeWork1.exe</PackagePath>
-      <Modified>2018-03-25T08:17:37.141</Modified>
+      <Modified>2018-03-26T16:01:24.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -495,68 +495,68 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2016-06-11T14:15:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Assets\icon1.jpg">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Assets\icon1.jpg">
       <PackagePath>Assets\icon1.jpg</PackagePath>
       <Modified>2018-03-20T06:44:17.266</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Assets\MainPageBackground.jpg">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Assets\MainPageBackground.jpg">
       <PackagePath>Assets\MainPageBackground.jpg</PackagePath>
       <Modified>2018-03-16T01:24:56.013</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2018-03-13T11:03:28.236</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2018-03-10T01:38:45.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2018-03-10T01:38:45.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2018-03-10T01:38:45.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2018-03-10T01:38:45.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2018-03-10T01:38:45.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2018-03-10T01:38:45.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2018-03-10T01:38:45.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\bin\x86\Debug\HomeWork1.xr.xml">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\bin\x86\Debug\HomeWork1.xr.xml">
       <PackagePath>HomeWork1.xr.xml</PackagePath>
-      <Modified>2018-03-25T03:18:37.850</Modified>
+      <Modified>2018-03-26T14:59:53.174</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2017-09-28T09:28:16.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-25T08:17:37.813</Modified>
+      <Modified>2018-03-26T15:01:05.974</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g\source\repos\HomeWork1\HomeWork1\bin\x86\Debug\Core\HomeWork1.exe">
+    <AppxPackagedFile Include="D:\MOSAD\HomeWork1\HomeWork1\bin\x86\Debug\Core\HomeWork1.exe">
       <PackagePath>HomeWork1.exe</PackagePath>
-      <Modified>2018-03-25T08:17:38.083</Modified>
+      <Modified>2018-03-26T16:01:25.366</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

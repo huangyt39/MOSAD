@@ -64,13 +64,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="md:ItemList">
                             <Grid Height="100" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="42"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                </Grid.ColumnDefinitions>
-                                
+
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup>
                                         <VisualState x:Name="narrow">
@@ -93,10 +87,17 @@
 
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
-                                
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="42"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                         
                                 <CheckBox x:Name="LineCheckBox" Grid.Column="0" VerticalAlignment="Center" Height="32" Width="32"/>
-                                <Image x:Name="CheckBoxImage" Grid.Column="1" Source="{x:Bind pub_img}" Height="90" Width="90"/>
-                                <TextBlock Grid.Column="2" Text="{x:Bind pub_title}" VerticalAlignment="Center" Foreground="Black" Margin="10"/>
+                                <Image x:Name="CheckBoxImage" Grid.Column="1" Source="{x:Bind img}" Height="90" Width="90"/>
+                                <TextBlock Grid.Column="2" Text="{x:Bind title}" VerticalAlignment="Center" Foreground="Black" Margin="10"/>
                                 <Line Grid.Column="2" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" VerticalAlignment="Center" Visibility="{Binding ElementName=LineCheckBox,Path=IsChecked}"/>
                                 <AppBarButton Grid.Column="3" Icon="Setting" Height="50" IsCompact="True" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <AppBarButton.Flyout>

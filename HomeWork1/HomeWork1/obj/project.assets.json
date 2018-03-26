@@ -25576,11 +25576,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\g\\source\\repos\\HomeWork1\\HomeWork1\\HomeWork1.csproj",
+      "projectUniqueName": "D:\\MOSAD\\HomeWork1\\HomeWork1\\HomeWork1.csproj",
       "projectName": "HomeWork1",
-      "projectPath": "C:\\Users\\g\\source\\repos\\HomeWork1\\HomeWork1\\HomeWork1.csproj",
+      "projectPath": "D:\\MOSAD\\HomeWork1\\HomeWork1\\HomeWork1.csproj",
       "packagesPath": "C:\\Users\\g\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\g\\source\\repos\\HomeWork1\\HomeWork1\\obj\\",
+      "outputPath": "D:\\MOSAD\\HomeWork1\\HomeWork1\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
