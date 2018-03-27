@@ -41,7 +41,6 @@
       <RootProperty Name="Height" />
       <RootProperty Name="IsCompact" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Flyout" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
@@ -75,6 +74,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
+      <RootProperty Name="MinWidth" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="HorizontalAlignment" />
@@ -147,12 +147,6 @@
       <RootProperty Name="X1" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Visibility" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
-      <RootProperty Name="Items" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
-      <RootProperty Name="Text" />
     </RootType>
     <RootType FullName="App4.MainPage" />
   </Roots.RootTypes>

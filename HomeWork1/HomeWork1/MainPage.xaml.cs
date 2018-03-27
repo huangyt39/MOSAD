@@ -3,6 +3,7 @@ using HomeWork1.Model;
 using HomeWork1.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -48,19 +49,6 @@ namespace App4
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
-
-            if (rootFrame.CanGoBack)
-            {
-                // Show UI in title bar if opted-in and in-app backstack is not empty.
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    AppViewBackButtonVisibility.Visible;
-            }
-            else
-            {
-                // Remove the UI from the title bar if in-app back stack is empty.
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    AppViewBackButtonVisibility.Collapsed;
-            }
 
             if (e.Parameter.GetType() == typeof(ItemListViewModels))
             {
@@ -156,6 +144,18 @@ namespace App4
                 }
             }
 
+        }
+
+        private async void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.SelectedItem = (ItemList)((AppBarButton)sender).DataContext;
+            if(this.ViewModel.SelectedItem != null)
+            {
+                this.ViewModel.RemoveItemList(this.ViewModel.SelectedItem);
+                await new MessageDialog("Delete successfully!").ShowAsync();
+                this.ViewModel.SelectedItem = null;
+                Frame.Navigate(typeof(MainPage), ViewModel);
+            }
         }
     }
 }

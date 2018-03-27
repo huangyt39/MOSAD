@@ -53,17 +53,6 @@ namespace App4.Assets
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
-            if (rootFrame.CanGoBack)
-            {
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    AppViewBackButtonVisibility.Visible;
-            }
-            else
-            {
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    AppViewBackButtonVisibility.Collapsed;
-            }
-
             ViewModel = ((HomeWork1.ViewModels.ItemListViewModels)e.Parameter);
             if (ViewModel.SelectedItem == null)
             {

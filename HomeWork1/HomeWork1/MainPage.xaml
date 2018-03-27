@@ -51,7 +51,6 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition Width="50"></ColumnDefinition>
@@ -64,12 +63,19 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="md:ItemList">
                             <Grid Height="100" >
+                                                               
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="42"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition x:Name="ImgGrid" Width="*" MinWidth="150"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
 
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup>
                                         <VisualState x:Name="narrow">
                                             <VisualState.Setters>
-                                                <Setter Target="CheckBoxImage.Visibility" Value="Collapsed"/>
+                                                <Setter Target="CheckBoxImage.Width" Value="0"/>
                                             </VisualState.Setters>
                                             <VisualState.StateTriggers>
                                                 <AdaptiveTrigger MinWindowWidth="1"/>
@@ -78,7 +84,7 @@
 
                                         <VisualState x:Name="wide">
                                             <VisualState.Setters>
-                                                <Setter Target="CheckBoxImage.Visibility" Value="Visible"/>
+                                                <Setter Target="CheckBoxImage.Width" Value="Auto"/>
                                             </VisualState.Setters>
                                             <VisualState.StateTriggers>
                                                 <AdaptiveTrigger MinWindowWidth="601"/>
@@ -88,38 +94,24 @@
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="42"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                </Grid.ColumnDefinitions>
-                                         
                                 <CheckBox x:Name="LineCheckBox" Grid.Column="0" VerticalAlignment="Center" Height="32" Width="32"/>
                                 <Image x:Name="CheckBoxImage" Grid.Column="1" Source="{x:Bind img}" Height="90" Width="90"/>
                                 <TextBlock Grid.Column="2" Text="{x:Bind title}" VerticalAlignment="Center" Foreground="Black" Margin="10"/>
                                 <Line Grid.Column="2" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" VerticalAlignment="Center" Visibility="{Binding ElementName=LineCheckBox,Path=IsChecked}"/>
-                                <AppBarButton Grid.Column="3" Icon="Setting" Height="50" IsCompact="True" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <AppBarButton.Flyout>
-                                        <MenuFlyout>
-                                            <MenuFlyoutItem Text="Edit"/>
-                                            <MenuFlyoutItem Text="Delete"/>
-                                        </MenuFlyout>
-                                    </AppBarButton.Flyout>
-                                </AppBarButton>
+                                <AppBarButton Grid.Column="3" Icon="Delete" Height="50" IsCompact="True" VerticalAlignment="Center" HorizontalAlignment="Right" Click="AppBarButton_Click"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
 
-            <StackPanel x:Name="AddItemStackPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" Visibility="Visible" >
-                <Grid Height="150" Width="150">
+            <StackPanel x:Name="AddItemStackPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Visibility="Visible" >
+                <Grid Height="130" Width="130">
                     <Image x:Name="Image" Source="../Assets/icon1.jpg" Width="{Binding ElementName=PictureSlider,Path=Value}" />
                 </Grid>
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                     <AppBarButton x:Name="SelectImgButton" Icon="Pictures" HorizontalAlignment="Right" Label="Select" Click="SelectImgButton_Click" />
-                    <Slider x:Name="PictureSlider"  Minimum="100" Maximum="150"/>
+                    <Slider x:Name="PictureSlider"  Minimum="70" Maximum="130"/>
                     <TextBlock Text="Title"  FontSize="30"  TextAlignment="Left" />
                     <TextBox x:Name="TitleTextBox" Text=""  Height="30" Margin="0, 10, 0, 0"/>
                     <TextBlock Text= "Detail"  FontSize="30" Margin="0"/>
