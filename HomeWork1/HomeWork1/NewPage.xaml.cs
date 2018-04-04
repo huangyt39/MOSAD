@@ -34,9 +34,12 @@ namespace App4.Assets
 
         private HomeWork1.ViewModels.ItemListViewModels ViewModel;
 
+
+
         public NewPage()
         {
             this.InitializeComponent();
+            ElementSoundPlayer.Volume = 0.5;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
