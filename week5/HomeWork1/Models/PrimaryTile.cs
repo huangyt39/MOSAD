@@ -16,7 +16,7 @@ namespace HomeWork1.Models
 
         public PrimaryTile(string _title, string _detail, DateTime _date)
         {
-            time = _date.ToString();
+            time = _date.Year + "-" + _date.Month + "-" + _date.Day;
             message = _title;
             message2 = _detail;
         }

@@ -59,7 +59,7 @@
             <TextBlock x:Name="MainPageTitle" Text="MyLists" Grid.Column="1" Grid.Row="0" Style="{StaticResource header}"/>
             
             <StackPanel x:Name="DisplayItem" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top">
-                <ListView IsItemClickEnabled="True" ItemClick="ItemList_ItemClick" ItemsSource="{x:Bind ViewModel.AllItems}">
+                <ListView IsItemClickEnabled="False"  ItemsSource="{x:Bind ViewModel.AllItems}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="md:ItemList">
                             <UserControl>
@@ -99,8 +99,16 @@
                                 <Image x:Name="CheckBoxImage" Grid.Column="1" Source="{x:Bind img}" Height="90" Width="90"/>
                                 <TextBlock Grid.Column="2" Text="{x:Bind title}" Margin="20" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left"/>
                                 <Line Grid.Column="2" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" VerticalAlignment="Center" Visibility="{Binding ElementName=LineCheckBox,Path=IsChecked}"/>
-                                <AppBarButton Grid.Column="3" Icon="Delete" Height="50" IsCompact="True" VerticalAlignment="Center" HorizontalAlignment="Right" Click="AppBarButton_Click"/>
-                            </Grid>
+                                    <AppBarButton Grid.Column="3" Icon="Setting" Height="50" IsCompact="True" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <AppBarButton.Flyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem Text="Edit" Click="ItemList_ItemClick"/>
+                                                <MenuFlyoutItem Text="Delete" Click="AppBarButton_Click"/>
+                                                <MenuFlyoutItem Text="Share" Click="MenuFlyoutItem_Click" />
+                                            </MenuFlyout>
+                                        </AppBarButton.Flyout>
+                                    </AppBarButton>
+                                </Grid>
                             </UserControl>
                         </DataTemplate>
                     </ListView.ItemTemplate>

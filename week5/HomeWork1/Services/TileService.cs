@@ -20,6 +20,7 @@ namespace HomeWork1.Services
                     new XElement("visual",
                         // Small Tile
                         new XElement("binding", new XAttribute("branding", primaryTile.branding), new XAttribute("displayName", primaryTile.appName), new XAttribute("template", "TileSmall"),
+                            new XElement("image", new XAttribute("placement", "background"), new XAttribute("src", "Assets/Square44x44Logo.scale-200.png")),
                             new XElement("group",
                                 new XElement("subgroup",
                                     new XElement("text", primaryTile.time, new XAttribute("hint-style", "caption")),
@@ -30,6 +31,7 @@ namespace HomeWork1.Services
 
                         // Medium Tile
                         new XElement("binding", new XAttribute("branding", primaryTile.branding), new XAttribute("displayName", primaryTile.appName), new XAttribute("template", "TileMedium"),
+                        new XElement("image", new XAttribute("placement", "background"), new XAttribute("src", "Assets/Square71x71Logo.scale-200.png")),
                             new XElement("group",
                                 new XElement("subgroup",
                                     new XElement("text", primaryTile.time, new XAttribute("hint-style", "caption")),
@@ -39,6 +41,7 @@ namespace HomeWork1.Services
                         ),
                         // Wide Tile
                         new XElement("binding", new XAttribute("branding", primaryTile.branding), new XAttribute("displayName", primaryTile.appName), new XAttribute("template", "TileWide"),
+                            new XElement("image", new XAttribute("placement", "background"), new XAttribute("src", "Assets/Wide310x150Logo.scale-200.png")),
                             new XElement("group",
                                 new XElement("subgroup",
                                     new XElement("text", primaryTile.time, new XAttribute("hint-style", "caption")),
@@ -46,13 +49,14 @@ namespace HomeWork1.Services
                                     new XElement("text", primaryTile.message2, new XAttribute("hint-style", "captionsubtle"), new XAttribute("hint-wrap", true), new XAttribute("hint-maxLines", 3))
                                     ),
                                 new XElement("subgroup", new XAttribute("hint-weight", 15),
-                                    new XElement("image", new XAttribute("placement", "inline"), new XAttribute("src", "Assets/StoreLogo.png"))
+                                    new XElement("image", new XAttribute("placement", "inline"), new XAttribute("src", "Assets/Wide310x150Logo.scale-200.png"))
                                 )
                             )
                         ),
 
                         //Large Tile
                         new XElement("binding", new XAttribute("branding", primaryTile.branding), new XAttribute("displayName", primaryTile.appName), new XAttribute("template", "TileLarge"),
+                            new XElement("image", new XAttribute("placement", "background"), new XAttribute("src", "Assets/Square310x310Logo.scale-200.png")),
                             new XElement("group",
                                 new XElement("subgroup",
                                     new XElement("text", primaryTile.time, new XAttribute("hint-style", "caption")),
@@ -60,7 +64,7 @@ namespace HomeWork1.Services
                                     new XElement("text", primaryTile.message2, new XAttribute("hint-style", "captionsubtle"), new XAttribute("hint-wrap", true), new XAttribute("hint-maxLines", 3))
                                     ),
                                 new XElement("subgroup", new XAttribute("hint-weight", 15),
-                                    new XElement("image", new XAttribute("placement", "inline"), new XAttribute("src", "Assets/StoreLogo.png"))
+                                    new XElement("image", new XAttribute("placement", "inline"), new XAttribute("src", "Assets/Square310x310Logo.scale-200.png"))
                                 )
                             )
                         )

@@ -26,6 +26,8 @@ using HomeWork1.Models;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml.Navigation;
 using static App4.Assets.NewPage;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.ApplicationModel;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
@@ -40,6 +42,12 @@ namespace App4
     {
 
         public HomeWork1.ViewModels.ItemListViewModels ViewModel { get;set; }
+
+        private string shareTitle = "", shareDescription = "", shareImgName = "";
+        private StorageFile shareImg;
+        //DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+        private string shareDate;
+
         int ItemIndex = 0;
 
         public MainPage()
@@ -91,6 +99,31 @@ namespace App4
             {
                 this.ViewModel = (ItemListViewModels)(e.Parameter);
             }
+
+            DataTransferManager.GetForCurrentView().DataRequested += OnShareDataRequested;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            DataTransferManager.GetForCurrentView().DataRequested -= OnShareDataRequested;
+        }
+
+        void OnShareDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            var request = args.Request;
+
+            request.Data.Properties.Title = shareTitle;
+            request.Data.Properties.Description = shareDescription;
+            request.Data.SetText(shareDescription + shareDate);
+
+            try
+            {
+                request.Data.SetBitmap(RandomAccessStreamReference.CreateFromFile(shareImg));
+            }
+            finally
+            {
+                request.GetDeferral().Complete();
+            }
         }
 
         private void DeleteAppBarButton_Click(object sender, RoutedEventArgs e)
@@ -102,11 +135,11 @@ namespace App4
             }
         }
 
-        private void ItemList_ItemClick(object sender, ItemClickEventArgs i)
+        private void ItemList_ItemClick(object sender, RoutedEventArgs e)
         {
-            ViewModel.SelectedItem = (ItemList)(i.ClickedItem);
+            this.ViewModel.SelectedItem = (ItemList)((MenuFlyoutItem)sender).DataContext;
 
-            if(this.AddItemStackPanel.Visibility.ToString() == "Collapsed")
+            if (this.AddItemStackPanel.Visibility.ToString() == "Collapsed")
             {
                 Frame.Navigate(typeof(NewPage), ViewModel);
             }
@@ -185,7 +218,7 @@ namespace App4
 
         private async void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            this.ViewModel.SelectedItem = (ItemList)((AppBarButton)sender).DataContext;
+            this.ViewModel.SelectedItem = (ItemList)((MenuFlyoutItem)sender).DataContext;
             if(this.ViewModel.SelectedItem != null)
             {
                 this.ViewModel.RemoveItemList(this.ViewModel.SelectedItem);
@@ -193,6 +226,29 @@ namespace App4
                 this.ViewModel.SelectedItem = null;
                 Frame.Navigate(typeof(MainPage), ViewModel);
             }
+            this.ViewModel.SelectedItem = null;
+        }
+
+        async private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.SelectedItem = (ItemList)((MenuFlyoutItem)sender).DataContext;
+
+            shareTitle = this.ViewModel.SelectedItem.title;
+            shareDescription = this.ViewModel.SelectedItem.detail;
+            //shareImgName = item.img;
+            var date = this.ViewModel.SelectedItem.date;
+            shareDate = "\nDue date: " + date.Year + '-' + date.Month + '-' + date.Day;
+            if (shareImgName == "")
+            {
+                shareImg = await Package.Current.InstalledLocation.GetFileAsync("Assets\\icon1.jpg");
+            }
+            else
+            {
+                shareImg = await ApplicationData.Current.LocalFolder.GetFileAsync(shareImgName);
+            }
+            DataTransferManager.ShowShareUI();
+
+            this.ViewModel.SelectedItem = null;
         }
     }
 }

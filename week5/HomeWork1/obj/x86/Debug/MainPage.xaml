@@ -59,7 +59,7 @@
             <TextBlock x:ConnectionId='7' x:Name="MainPageTitle" Text="MyLists" Grid.Column="1" Grid.Row="0" Style="{StaticResource header}"/>
             
             <StackPanel x:ConnectionId='8' x:Name="DisplayItem" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top">
-                <ListView x:ConnectionId='18' IsItemClickEnabled="True"                                                                         >
+                <ListView x:ConnectionId='18' IsItemClickEnabled="False"                                           >
                     <ListView.ItemTemplate>
                         <DataTemplate                         >
                             <UserControl x:ConnectionId='19'>
@@ -99,8 +99,16 @@
                                 <Image x:ConnectionId='20' x:Name="CheckBoxImage" Grid.Column="1"                       Height="90" Width="90"/>
                                 <TextBlock x:ConnectionId='21' Grid.Column="2"                       Margin="20" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left"/>
                                 <Line Grid.Column="2" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" VerticalAlignment="Center" Visibility="{Binding ElementName=LineCheckBox,Path=IsChecked}"/>
-                                <AppBarButton x:ConnectionId='22' Grid.Column="3" Icon="Delete" Height="50" IsCompact="True" VerticalAlignment="Center" HorizontalAlignment="Right"                           />
-                            </Grid>
+                                    <AppBarButton Grid.Column="3" Icon="Setting" Height="50" IsCompact="True" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <AppBarButton.Flyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem x:ConnectionId='22' Text="Edit"                           />
+                                                <MenuFlyoutItem x:ConnectionId='23' Text="Delete"                           />
+                                                <MenuFlyoutItem x:ConnectionId='24' Text="Share"                              />
+                                            </MenuFlyout>
+                                        </AppBarButton.Flyout>
+                                    </AppBarButton>
+                                </Grid>
                             </UserControl>
                         </DataTemplate>
                     </ListView.ItemTemplate>

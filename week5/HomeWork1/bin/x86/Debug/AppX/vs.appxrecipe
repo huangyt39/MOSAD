@@ -31,13 +31,13 @@
     <AppXManifest Include="D:\MOSAD\week5\HomeWork1\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-07T02:07:53.613</Modified>
+      <Modified>2018-04-07T04:06:13.984</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\MOSAD\week5\HomeWork1\bin\x86\Debug\HomeWork1.exe">
       <PackagePath>entrypoint\HomeWork1.exe</PackagePath>
-      <Modified>2018-04-07T02:07:53.264</Modified>
+      <Modified>2018-04-07T04:06:12.815</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -553,7 +553,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\MOSAD\week5\HomeWork1\bin\x86\Debug\HomeWork1.xr.xml">
       <PackagePath>HomeWork1.xr.xml</PackagePath>
-      <Modified>2018-04-06T11:36:23.927</Modified>
+      <Modified>2018-04-07T03:11:00.366</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -562,11 +562,11 @@
     <AppxPackagedFile Include="D:\MOSAD\week5\HomeWork1\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-06T12:12:11.178</Modified>
+      <Modified>2018-04-07T03:11:48.364</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\MOSAD\week5\HomeWork1\bin\x86\Debug\Core\HomeWork1.exe">
       <PackagePath>HomeWork1.exe</PackagePath>
-      <Modified>2018-04-07T02:07:53.610</Modified>
+      <Modified>2018-04-07T04:06:13.971</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
