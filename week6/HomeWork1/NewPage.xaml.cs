@@ -20,6 +20,8 @@ using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
+using Windows.Storage.AccessCache;
+using HomeWork1;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
@@ -31,7 +33,7 @@ namespace App4.Assets
     /// </summary>
     public sealed partial class NewPage : Page
     {
-
+        public string imgPath;
         private HomeWork1.ViewModels.ItemListViewModels ViewModel;
 
         public NewPage()
@@ -50,7 +52,7 @@ namespace App4.Assets
             dp.Date = DateTime.Today.Date;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -66,6 +68,49 @@ namespace App4.Assets
                 Image.Source = ViewModel.SelectedItem.img;
                 DetailTextBox.Text = ViewModel.SelectedItem.detail;
                 Datepicker.Date = ViewModel.SelectedItem.date;
+            }
+
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                ApplicationData.Current.LocalSettings.Values.Remove("TheWorkInProgress");
+            }
+            else
+            {
+                if (ApplicationData.Current.LocalSettings.Values.ContainsKey("TheWorkInProgress"))
+                {
+                    var composite = ApplicationData.Current.LocalSettings.Values["TheWorkInProgress"] as ApplicationDataCompositeValue;
+                    TitleTextBox.Text = (string)composite["Title"];
+                    DetailTextBox.Text = (string)composite["Detail"];
+                    Datepicker.Date = Convert.ToDateTime((string)composite["Date"]);
+
+                    StorageFile theFile = await StorageApplicationPermissions.FutureAccessList.GetFileAsync((string)ApplicationData.Current.LocalSettings.Values["MyToken"]);
+                    BitmapImage srcImage = new BitmapImage();
+                    if (theFile != null)
+                    {
+                        ApplicationData.Current.LocalSettings.Values["MyToken"] = StorageApplicationPermissions.FutureAccessList.Add(theFile);
+                        using (IRandomAccessStream stream = await theFile.OpenAsync(FileAccessMode.Read))
+                        {
+                            await srcImage.SetSourceAsync(stream);
+                            this.Image.Source = srcImage;
+                        }
+                    }
+
+                    ApplicationData.Current.LocalSettings.Values.Remove("TheWorkInProgress");
+                }
+            }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            bool issuspending = ((App)App.Current).isSuspending;
+            if (issuspending)
+            {
+                ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
+                composite["Title"] = TitleTextBox.Text;
+                composite["Detail"] = DetailTextBox.Text;
+                composite["Date"] = Datepicker.Date.ToString();
+
+                ApplicationData.Current.LocalSettings.Values["TheWorkInProgress"] = composite;
             }
         }
 
@@ -93,7 +138,7 @@ namespace App4.Assets
                             break;
                         }
                     }
-                    InsertItem(newId, TitleTextBox.Text, DetailTextBox.Text, Datepicker.Date.DateTime.ToString(), false);
+                    InsertItem(newId, TitleTextBox.Text, DetailTextBox.Text, Datepicker.Date.DateTime.ToString(), false, imgPath);
                     this.ViewModel.AddItemList(newId, TitleTextBox.Text, DetailTextBox.Text, Datepicker.Date.DateTime, Image.Source, false);
                     await new MessageDialog("Create successfully!").ShowAsync();
                     this.ViewModel.SelectedItem = null;
@@ -101,7 +146,7 @@ namespace App4.Assets
                 }
                 else
                 {
-                    UpdateItem(ViewModel.SelectedItem.id, TitleTextBox.Text, DetailTextBox.Text, Datepicker.Date.DateTime.ToString(), ViewModel.SelectedItem.ischeck);
+                    UpdateItem(ViewModel.SelectedItem.id, TitleTextBox.Text, DetailTextBox.Text, Datepicker.Date.DateTime.ToString(), ViewModel.SelectedItem.ischeck, imgPath);
                     ViewModel.UpdateItemList(ViewModel.SelectedItem.id, TitleTextBox.Text, DetailTextBox.Text, Datepicker.Date.DateTime, Image.Source, ViewModel.SelectedItem.ischeck);
                     await new MessageDialog("Update successfully!").ShowAsync();
                     ViewModel.SelectedItem = null;
@@ -151,28 +196,29 @@ namespace App4.Assets
 
         }
 
-        private void InsertItem(long id, string title, string detail, string date, bool? ischeck)
+        private void InsertItem(long id, string title, string detail, string date, bool? ischeck, string imgpath)
         {
             var db = HomeWork1.App.conn;
             try
             {
-                using (var newItem = db.Prepare("INSERT INTO ItemList (Id, Title, Detail, Date, Ischeck) VALUES(?, ?, ?, ?, ?)"))
+                using (var newItem = db.Prepare("INSERT INTO ItemList (Id, Title, Detail, Date, Ischeck, Img) VALUES(?, ?, ?, ?, ?, ?)"))
                 {
                     newItem.Bind(1, id);
                     newItem.Bind(2, title);
                     newItem.Bind(3, detail);
                     newItem.Bind(4, date);
                     newItem.Bind(5, ischeck == true ? 1 : 0);
+                    newItem.Bind(6, imgpath);
                     newItem.Step();
                 }
             }
             catch (Exception e)
             {
-                //Handle Error
+                throw e;
             }
         }
 
-        async private void UpdateItem(long id, string title, string detail, string date, bool? ischeck)
+        private void UpdateItem(long id, string title, string detail, string date, bool? ischeck, string imgpath)
         {
             var db = HomeWork1.App.conn;
             try
@@ -183,14 +229,37 @@ namespace App4.Assets
                     statement.Bind(1, title);
                     statement.Bind(2, detail);
                     statement.Bind(3, date);
-                    statement.Bind(4, id);
-                    statement.Bind(5, ischeck == true ? 1 : 0);
+                    statement.Bind(4, ischeck == true ? 1 : 0);
+                    statement.Bind(5, imgpath);
+                    statement.Bind(6, id);
                     statement.Step();
                 }
             }
             catch (Exception e)
             {
-                await new MessageDialog(e.Message).ShowAsync();
+                throw e;
+            }
+        }
+
+        private void LineCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in ViewModel.AllItems)
+            {
+                var db = HomeWork1.App.conn;
+                try
+                {
+                    string sql = @"UPDATE ItemList SET Ischeck = ? WHERE Id = ?";
+                    using (var statement = db.Prepare(sql))
+                    {
+                        statement.Bind(1, item.ischeck == true ? 1 : 0);
+                        statement.Bind(2, item.id);
+                        statement.Step();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -203,6 +272,5 @@ namespace App4.Assets
                 statement.Step();
             }
         }
-
     }
 }

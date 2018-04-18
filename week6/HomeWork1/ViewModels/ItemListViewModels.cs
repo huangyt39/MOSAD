@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -29,12 +30,20 @@ namespace HomeWork1.ViewModels
             {
                 using(var statement = conn.Prepare(sql))
                 {
-                    while(SQLiteResult.ROW == statement.Step())
+                    while (SQLiteResult.ROW == statement.Step())
                     {
                         string datestr = (string)statement[3];
                         datestr = datestr.Substring(0, datestr.IndexOf(' '));
                         DateTime date = new DateTime(int.Parse(datestr.Split('/')[0]), int.Parse(datestr.Split('/')[1]), int.Parse(datestr.Split('/')[2]));
-                        this.AddItemList((long)statement[0], (string)statement[1], (string)statement[2], date, null, (long)statement[4] == 1?true : false);
+                        string filename = (string)statement[5];
+
+                        if (filename != null) { 
+                            Uri uri = new Uri(filename, UriKind.RelativeOrAbsolute);
+                            BitmapImage Btm = new BitmapImage(uri);
+
+                            this.AddItemList((long)statement[0], (string)statement[1], (string)statement[2], date, Btm, (long)statement[4] == 1 ? true : false);
+                         }
+                        else this.AddItemList((long)statement[0], (string)statement[1], (string)statement[2], date, null, (long)statement[4] == 1 ? true : false);
                     }
                 }
             }

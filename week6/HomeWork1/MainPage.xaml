@@ -138,7 +138,7 @@
             <StackPanel x:Name="AddItemStackPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Visibility="Visible" >
       
                 <Grid Height="130" Width="130">
-                    <Image x:Name="Image" Source="../Assets/icon1.jpg" Width="{Binding ElementName=PictureSlider,Path=Value}" />
+                    <Image x:Name="Image" Source="" Width="{Binding ElementName=PictureSlider,Path=Value}" />
                 </Grid>
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                     <AppBarButton x:Name="SelectImgButton" Icon="Pictures" HorizontalAlignment="Right" Label="Select" Click="SelectImgButton_Click" />
