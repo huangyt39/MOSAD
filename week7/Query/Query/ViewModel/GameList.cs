@@ -10,5 +10,9 @@ namespace Query.ViewModel
     public class GameList
     {
         public List<Game> Allgame = new List<Game>();
+
+        public GameList()
+        {
+        }
     }
 }
